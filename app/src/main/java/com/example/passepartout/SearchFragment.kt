@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,20 +29,20 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.search_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         recyclerView = view.findViewById(R.id.recyclerViewSearchResults)
         recyclerView.layoutManager = LinearLayoutManager(context)
         searchView = view.findViewById(R.id.searchView)
-
+        searchView.isIconified = false
+        searchView.requestFocus()
+        val imm = requireContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT)
         adapter = CombinedSearchAdapter(user())
         recyclerView.adapter = adapter
-
         DataUtil.loadUsersFromDB { success ->
             if (success) {
                 val uid = FirebaseAuth.getInstance().currentUser?.uid
@@ -53,16 +54,13 @@ class SearchFragment : Fragment() {
                 }
             }
         }
-
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 val query = newText.orEmpty().trim()
                 if (currentUser == null) return false
-
                 val combinedResults = mutableListOf<Any>()
                 currentUser?.friends?.keys?.forEach { friendUid ->
                     val friendUser = usersDB.users[friendUid]
@@ -84,7 +82,6 @@ class SearchFragment : Fragment() {
                         }
                     }
                 }
-
                 val nonFriends = allUsers.filter {
                     it.uid != currentUser!!.uid && !currentUser!!.friends.containsKey(it.uid)
                 }
@@ -93,13 +90,11 @@ class SearchFragment : Fragment() {
                         combinedResults.add(userItem)
                     }
                 }
-
                 if (query.isEmpty()) {
                     adapter.updateList(emptyList())
                 } else {
                     adapter.updateList(combinedResults)
                 }
-
                 Log.d("SearchFragment", "Combined results count: ${combinedResults.size}")
                 return true
             }

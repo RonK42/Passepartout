@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
-            android:queryHint="חפש טיולים..." />
+            android:queryHint="Search..." />
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
