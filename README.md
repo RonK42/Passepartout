@@ -16,6 +16,8 @@ Passepartout is a travel journal app. Share your journey with your friends, shar
 - Feed with connected users (aka friends).
 - Find and follow new users.
 
+## Video Show Case
+https://www.youtube.com/shorts/sYMEFgwrLMY
 
 ## ScreenShots
 
