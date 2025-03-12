@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "874837589567",
+    "firebase_url": "https://passepartout-ba1e7-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "passepartout-ba1e7",
+    "storage_bucket": "passepartout-ba1e7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874837589567:android:5b5123824d9ecd033f028a",
+        "android_client_info": {
+          "package_name": "com.example.passepartout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874837589567-qanu9h3angfhvc7eimgtc8uhhj0dcqvp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.passepartout",
+            "certificate_hash": "9aa596c728e6760d8657c19d13cbb13c68fb69fe"
+          }
+        },
+        {
+          "client_id": "874837589567-oc47pv37m3af7os47gt705bm37vcnodl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDowC0x3Q5SBfegpB5YsYfN4sWQL7M6tnM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874837589567-37ea1bhnmh9rfpkjeaqpim5477la3mlr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
